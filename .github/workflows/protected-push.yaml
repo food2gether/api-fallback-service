@@ -26,7 +26,7 @@ jobs:
     with:
       java_version: '17'
       test_results_artifact_key: test-results
-      sonar_project_key: food2gether_restaurant-service
+      sonar_project_key: food2gether_api-fallback-service
       # Branch analysis parameters should not be needed for intregated CIs (like GitHub Actions)
     secrets:
       sonar_token: ${{ secrets.SONAR_TOKEN }}
