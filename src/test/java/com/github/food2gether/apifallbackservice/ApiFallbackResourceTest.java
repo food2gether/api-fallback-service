@@ -22,7 +22,7 @@ class ApiFallbackResourceTest {
           .when().get(endpoint)
           .then()
              .statusCode(404)
-             .body(is("{\"success\": false,\"error\": {\"code\": 404,\"message\": \"endpoint.notfound\"}}"));
+             .body(is("{\"success\":false,\"error\":{\"code\":404,\"message\":\"endpoint.notfound\"}}"));
     }
 
 }
