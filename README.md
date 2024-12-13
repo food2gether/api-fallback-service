@@ -16,6 +16,16 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw quarkus:dev
 ```
 
+## Run the application in cluster mode
+```shell script
+# If you are on windows it is recommended to use virtualbox as driver for minikube
+minikube config set driver virtualbox
+bash k8s/setup.sh <github-token>
+```
+This will setup a local minikube cluster with all components deployed. It will replace the
+deployment targeting this application with a service pointing to the host machine. This way you can
+run the application in dev mode and is accessable as if it was running in the cluster.
+
 ## Package the application for production
 ```shell script
 ./mvnw package -Pnative
