@@ -10,18 +10,19 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class ApiFallbackResourceTest {
 
-    @ParameterizedTest
-    @ValueSource(strings = {
-        "/",
-        "/api/unknown",
-        "/some/random/as/endpoint/"
-    })
-    void testHelloEndpoint(String endpoint) {
-        given()
-          .when().get(endpoint)
-          .then()
-             .statusCode(404)
-             .body(is("{\"success\":false,\"error\":{\"code\":404,\"message\":\"endpoint.notfound\"}}"));
-    }
+  @ParameterizedTest
+  @ValueSource(strings = {
+      "/",
+      "/api/unknown",
+      "/some/random/as/endpoint/"
+  })
+  void testHelloEndpoint(String endpoint) {
+    String expected = "{\"success\":false,\"error\":{\"code\":404,\"detail\":\"endpoint.notfound\"}}";
+    given()
+        .when().get(endpoint)
+        .then()
+        .statusCode(404)
+        .body(is(expected));
+  }
 
 }
