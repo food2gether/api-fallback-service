@@ -2,8 +2,7 @@ package com.github.food2gether.apifallbackservice;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.food2gether.response.ErrorResponse;
-import com.github.food2gether.response.Response;
+import com.github.food2gether.shared.response.APIResponse;
 import io.quarkus.vertx.web.Route;
 import io.quarkus.vertx.web.Route.HttpMethod;
 import io.quarkus.vertx.web.RoutingExchange;
@@ -13,6 +12,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class ApiFallbackResource {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
+  private static final APIResponse API_RESPONSE = APIResponse.apiErrorResponse(404, "Endpoint not found");
 
   @Route(
       path = "/*",
@@ -20,10 +20,9 @@ public class ApiFallbackResource {
       produces = "application/json"
   )
   public void fallback(RoutingExchange exchange) throws JsonProcessingException {
-    ErrorResponse response = Response.of(404, "endpoint.notfound");
     exchange.response()
-        .setStatusCode(response.getError().getCode())
-        .end(MAPPER.writeValueAsString(response));
+        .setStatusCode(API_RESPONSE.getStatus())
+        .end(MAPPER.writeValueAsString(API_RESPONSE));
   }
 
 }

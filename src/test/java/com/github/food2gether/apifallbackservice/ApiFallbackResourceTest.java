@@ -14,10 +14,10 @@ class ApiFallbackResourceTest {
   @ValueSource(strings = {
       "/",
       "/api/unknown",
-      "/some/random/as/endpoint/"
+      "/some/random/endpoint/"
   })
   void testHelloEndpoint(String endpoint) {
-    String expected = "{\"success\":false,\"error\":{\"code\":404,\"detail\":\"endpoint.notfound\"}}";
+    String expected = "{\"success\":false,\"status\":404,\"message\":\"Endpoint not found\"}";
     given()
         .when().get(endpoint)
         .then()

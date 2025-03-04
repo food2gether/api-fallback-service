@@ -15,7 +15,6 @@
     <quarkus.platform.version>3.17.4</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.5.0</surefire-plugin.version>
-    <ghpkg.f2g.password>&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x5F;&#x70;&#x61;&#x74;&#x5F;&#x31;&#x31;&#x41;&#x4F;&#x37;&#x47;&#x58;&#x33;&#x49;&#x30;&#x65;&#x43;&#x61;&#x7A;&#x6F;&#x69;&#x48;&#x38;&#x53;&#x75;&#x68;&#x4C;&#x5F;&#x37;&#x46;&#x71;&#x50;&#x57;&#x43;&#x4C;&#x6D;&#x70;&#x70;&#x70;&#x39;&#x61;&#x48;&#x39;&#x6E;&#x42;&#x51;&#x38;&#x76;&#x49;&#x4E;&#x4A;&#x74;&#x73;&#x68;&#x63;&#x33;&#x73;&#x61;&#x49;&#x33;&#x5A;&#x55;&#x71;&#x6C;&#x4D;&#x74;&#x62;&#x52;&#x6E;&#x6E;&#x76;&#x47;&#x5A;&#x36;&#x4E;&#x46;&#x54;&#x4B;&#x4F;&#x37;&#x35;&#x6D;&#x4F;&#x64;&#x6A;&#x56;&#x33;</ghpkg.f2g.password>
   </properties>
 
   <dependencyManagement>
@@ -32,9 +31,9 @@
 
   <repositories>
     <repository>
-      <id>ghpkg-food2gether-ro</id>
-      <!-- This uses oauth via http -->
-      <url>https://anonymous:${ghpkg.f2g.password}@maven.pkg.github.com/food2gether/*</url>
+      <id>jitpack</id>
+      <name>Jitpack</name>
+      <url>https://jitpack.io</url>
     </repository>
   </repositories>
 
@@ -42,7 +41,7 @@
     <dependency>
       <groupId>com.github.food2gether</groupId>
       <artifactId>shared-model</artifactId>
-      <version>0.1.0</version>
+      <version>0.8.0</version>
     </dependency>
 
     <dependency>
